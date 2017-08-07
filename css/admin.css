@@ -1,0 +1,30 @@
+.admin-page-wrapper {
+    color: #b30000;
+    width: 99%;
+    margin-top: 3%;
+    padding: 10px;
+   /*  border: 1px solid #b30000; */
+}
+
+@media (min-width: 992px) {
+    .admin-page-wrapper {
+        width: 60%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+#home-link {
+    float: right;
+}
+
+#admin-nav a {
+    /*margin-left: -50%;*/
+    color: #b30000;
+}
+
+@media (min-width: 768px) {
+    #admin-nav {
+        margin-left: -50%;
+    }
+}
