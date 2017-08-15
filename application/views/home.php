@@ -95,13 +95,21 @@
                                 <h3><b>Rotating Draft List:</b></h3>
                             </div>
                             <div class="project-name">
-                                <ul id="beer-list">
+                                <?php foreach($beers['drafts'] as $beer) : ?>
+                                        <b><?= $beer->name ?></b>
+                                        <br>
+                                <?php endforeach; ?>
+                                <input type="button" value="View Full List" class="btn btn-default" />
+                                <!--ul id="beer-list">
                                     <?php foreach($beers as $beer) : ?>
                                         <li>
-                                            <?=$beer->getName() ?>
+                                            <?=$beer->name ?>
+                                        </li>
+                                        <li>
+                                            <?=$beer->brewery ?>
                                         </li>
                                     <?php endforeach; ?>
-                                </ul>
+                                </ul -->
                             </div>
                         </div>
                         
@@ -194,8 +202,9 @@
 <aside class="bg-dark">
     <div class="container text-center">
         <div class="call-to-action">
-            <h2>View Our Full Menu!</h2>
+            <h2>View Full Menus!</h2>
             <input type="button" class="btn btn-default btn-xl sr-button" data-toggle="modal" data-target="#menu-modal" value="View Menu" id="full-menu-btn" />
+            <input type="button" class="btn btn-default btn-xl sr-button" data-toggle="modal" data-target="#beer-modal" value="View Drink List" id="full-menu-btn" />
         </div>
     </div>
 </aside>
@@ -286,8 +295,90 @@
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
         </div>
-
     </div>
-</div>   
+</div>
+
+
+<!-- Beer List Modal -->
+<div id="beer-modal" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title roman">JIMMY V's - Craft Beer List</h4>
+            </div>
+            <div class="modal-body">
+
+                <!-- Drafts panel -->
+                <div class="panel-group">
+                    <div class="panel panel-default">
+                        <a data-toggle="collapse" href="#draft-collapse">
+                            <div class="panel-heading">
+                                <h2 class="panel-title">
+                                    <span class="roman larger">D</span>rafts<span class="glyphicon glyphicon-plus float-right v-center"></span>
+                                </h2>
+                            </div>
+                        </a>
+                        <div id="draft-collapse" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <?php foreach($beers['drafts'] as $beer) : ?>
+                                    <div class="container col-sm-6">
+                                        <img src="<?= $beer->icon ?>" alt="<?= $beer->name ?> logo" class="img img-responsive beer-logo" />
+                                        <span class="beer-name"><?= $beer->name ?></span>
+                                        <i class="beer-type"><?= $beer->type ?></i>
+                                        <div class="beer-details">
+                                            <?= $beer->location ?>
+                                            &bull;
+                                            <?= $beer->abv ?>%
+                                            &bull;
+                                            <?= $beer->brewery ?>
+                                        </div>
+                                    </div>
+                                <?php endforeach; ?>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- /End drafts panel  -->
+
+                <!-- Bottles and cans panel -->
+                <div class="panel-group">
+                    <div class="panel panel-default">
+                        <a data-toggle="collapse" href="#bottles-collapse">
+                            <div class="panel-heading">
+                                <h2 class="panel-title">
+                                    <span class="roman larger">B</span>ottles &amp; <span class="roman larger">C</span>ans<span class="glyphicon glyphicon-plus float-right v-center"></span>
+                                </h2>
+                            </div>
+                        </a>
+                        <div id="bottles-collapse" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <?php foreach($beers['bottles'] as $beer) : ?>
+                                    <div class="container col-sm-6">
+                                        <img src="<?= $beer->icon ?>" alt="<?= $beer->name ?> logo" class="img img-responsive beer-logo" />
+                                        <span class="beer-name"><?= $beer->name ?></span>
+                                        <i class="beer-type"><?= $beer->type ?></i>
+                                        <div class="beer-details">
+                                            <?= $beer->location ?>
+                                            &bull;
+                                            <?= $beer->abv ?>%
+                                            &bull;
+                                            <?= $beer->brewery ?>
+                                        </div>
+                                    </div>
+                                <?php endforeach; ?>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- /End bottles panel -->
+
+            </div> <!-- /End modal body -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div> <!-- /End modal content -->
+    </div>
+</div> <!-- /End beer list modal -->
 
 <?php include_once 'footer.php' ?>

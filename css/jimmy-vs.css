@@ -611,6 +611,23 @@ header .header-content .header-content-inner p {
     margin-bottom: -1.2em;
   }
 }
+.beer-name {
+  font-size: 1.05em;
+  display: inline-block;
+  margin-top: 5px;
+}
+.beer-logo {
+  float: left;
+  max-height: 60px;
+  margin-right: 6px;
+  margin-bottom: 10px;
+}
+.beer-type {
+  font-size: 0.8em;
+}
+.beer-details {
+  font-size: 0.8em;
+}
 /* =======================
  *   Helper Styles
  * ======================= */
