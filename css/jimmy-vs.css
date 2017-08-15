@@ -614,6 +614,7 @@ header .header-content .header-content-inner p {
 .beer-name {
   font-size: 1.05em;
   display: inline-block;
+  font-weight: 600;
   margin-top: 5px;
 }
 .beer-logo {
@@ -628,6 +629,43 @@ header .header-content .header-content-inner p {
 .beer-details {
   font-size: 0.8em;
 }
+.btn-icon {
+  display: inline;
+  margin: 0px 3px 0px -27px;
+  padding: 13px;
+  color: white;
+  font-size: 1.4em;
+  border-radius: 40px;
+  background-color: #770000;
+}
+#full-menu-btn, #drink-list-btn {
+  margin-bottom: 8px;
+  width: 165px;
+  max-height: 50px;
+}
+#beer-icon {
+  margin-left: -30px;
+  font-size: 1.45em;
+}
+
+@media (min-width: 1366px) {
+  .hover-beer-name {
+    font-size: 1.5em;
+  }
+}
+@media (min-width: 500px) and (max-width: 992px) {
+  .hover-beer-name {
+    font-size: 1.2em;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1250px) {
+  .hover-beer-brewery {
+    display: none;
+  }
+}
+
+
 /* =======================
  *   Helper Styles
  * ======================= */

@@ -92,24 +92,19 @@
                     <div class="portfolio-box-caption">
                         <div class="portfolio-box-caption-content">
                             <div class="project-category text-faded">
-                                <h3><b>Rotating Draft List:</b></h3>
+                                <h3><b>Rotating Drafts:</b></h3>
                             </div>
                             <div class="project-name">
-                                <?php foreach($beers['drafts'] as $beer) : ?>
-                                        <b><?= $beer->name ?></b>
+                                <?php if (isset($beers['drafts'])) : ?>
+                                    <?php foreach($beers['drafts'] as $beer) : ?>
+                                        <b class="hover-beer-name"><?= $beer->name ?></b>
+                                        <i class="hidden-xs hover-beer-brewery"><?= $beer->brewery ?></i>
                                         <br>
-                                <?php endforeach; ?>
-                                <input type="button" value="View Full List" class="btn btn-default" />
-                                <!--ul id="beer-list">
-                                    <?php foreach($beers as $beer) : ?>
-                                        <li>
-                                            <?=$beer->name ?>
-                                        </li>
-                                        <li>
-                                            <?=$beer->brewery ?>
-                                        </li>
                                     <?php endforeach; ?>
-                                </ul -->
+                                <?php else: ?>
+                                    <?php include 'errors.php' ?>
+                                <?php endif; ?>
+
                             </div>
                         </div>
                         
@@ -203,8 +198,10 @@
     <div class="container text-center">
         <div class="call-to-action">
             <h2>View Full Menus!</h2>
-            <input type="button" class="btn btn-default btn-xl sr-button" data-toggle="modal" data-target="#menu-modal" value="View Menu" id="full-menu-btn" />
-            <input type="button" class="btn btn-default btn-xl sr-button" data-toggle="modal" data-target="#beer-modal" value="View Drink List" id="full-menu-btn" />
+            <!--input type="button" class="btn btn-default btn-xl sr-button" data-toggle="modal" data-target="#menu-modal" value="View Menu" id="full-menu-btn" /-->
+            <button class="btn btn-default btn-xl sr-button" data-toggle="modal" data-target="#menu-modal" id="full-menu-btn"><i class="fa fa-map btn-icon" aria-hidden="true"></i> Full Menu</button>
+            <!--input type="button" class="btn btn-default btn-xl sr-button" data-toggle="modal" data-target="#beer-modal" value="View Drink List" id="full-menu-btn" / -->
+            <button class="btn btn-default btn-xl sr-button" data-toggle="modal" data-target="#beer-modal" id="drink-list-btn"><i class="fa fa-beer btn-icon" aria-hidden="true" id="beer-icon" ></i> Drink List</button>
         </div>
     </div>
 </aside>
@@ -323,20 +320,24 @@
                         </a>
                         <div id="draft-collapse" class="panel-collapse collapse">
                             <div class="panel-body">
-                                <?php foreach($beers['drafts'] as $beer) : ?>
-                                    <div class="container col-sm-6">
-                                        <img src="<?= $beer->icon ?>" alt="<?= $beer->name ?> logo" class="img img-responsive beer-logo" />
-                                        <span class="beer-name"><?= $beer->name ?></span>
-                                        <i class="beer-type"><?= $beer->type ?></i>
-                                        <div class="beer-details">
-                                            <?= $beer->location ?>
-                                            &bull;
-                                            <?= $beer->abv ?>%
-                                            &bull;
-                                            <?= $beer->brewery ?>
+                                <?php if (isset($beers['drafts'])) : ?>
+                                    <?php foreach($beers['drafts'] as $beer) : ?>
+                                        <div class="container col-md-6">
+                                            <img src="<?= $beer->icon ?>" alt="<?= $beer->name ?> logo" class="img img-responsive beer-logo" />
+                                            <span class="beer-name"><?= $beer->name ?></span>
+                                            <i class="beer-type"><?= $beer->type ?></i>
+                                            <div class="beer-details">
+                                                <?= $beer->location ?>
+                                                &bull;
+                                                <?= $beer->abv ?>%
+                                                &bull;
+                                                <?= $beer->brewery ?>
+                                            </div>
                                         </div>
-                                    </div>
-                                <?php endforeach; ?>
+                                    <?php endforeach; ?>
+                                <?php else: ?>
+                                    <?php include 'errors.php' ?>
+                                <?php endif; ?>
                             </div>
                         </div>
                     </div>
@@ -354,20 +355,24 @@
                         </a>
                         <div id="bottles-collapse" class="panel-collapse collapse">
                             <div class="panel-body">
-                                <?php foreach($beers['bottles'] as $beer) : ?>
-                                    <div class="container col-sm-6">
-                                        <img src="<?= $beer->icon ?>" alt="<?= $beer->name ?> logo" class="img img-responsive beer-logo" />
-                                        <span class="beer-name"><?= $beer->name ?></span>
-                                        <i class="beer-type"><?= $beer->type ?></i>
-                                        <div class="beer-details">
-                                            <?= $beer->location ?>
-                                            &bull;
-                                            <?= $beer->abv ?>%
-                                            &bull;
-                                            <?= $beer->brewery ?>
+                                <?php if (isset($beers['bottles'])) : ?>
+                                    <?php foreach($beers['bottles'] as $beer) : ?>
+                                        <div class="container col-md-6">
+                                            <img src="<?= $beer->icon ?>" alt="<?= $beer->name ?> logo" class="img img-responsive beer-logo" />
+                                            <span class="beer-name"><?= $beer->name ?></span>
+                                            <i class="beer-type"><?= $beer->type ?></i>
+                                            <div class="beer-details">
+                                                <?= $beer->location ?>
+                                                &bull;
+                                                <?= $beer->abv ?>%
+                                                &bull;
+                                                <?= $beer->brewery ?>
+                                            </div>
                                         </div>
-                                    </div>
-                                <?php endforeach; ?>
+                                    <?php endforeach; ?>
+                                <?php else: ?>
+                                    <?php include 'errors.php' ?>
+                                <?php endif; ?>
                             </div>
                         </div>
                     </div>

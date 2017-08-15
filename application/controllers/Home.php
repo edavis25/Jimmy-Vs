@@ -27,15 +27,22 @@ class Home extends CI_Controller {
         $data = array();
 
         // Format beer list
-        $untappd = $this->untappdlibrary->getInstance();
-        $draftList = $untappd->getMenuByName('Draft List');
-        $bottleList = $untappd->getMenuByName('Bottles and Cans');
-        
-        $data['beers'] = array(
-            //'drafts'  => sortAssocArray($this->formatBeerList($draftList), 'name'),
-            'drafts'  => $this->formatBeerList($draftList), 'name',
-            'bottles' => $this->formatBeerList($bottleList)
-        );
+        try {
+            $untappd = $this->untappdlibrary->getInstance();
+
+            $draftList = $untappd->getMenuByName('Draft List');
+            $bottleList = $untappd->getMenuByName('Bottles and Cans');
+            $data['beers'] = array(
+                //'drafts'  => sortAssocArray($this->formatBeerList($draftList), 'name'),
+                'drafts'  => $this->formatBeerList($draftList),
+                'bottles' => $this->formatBeerList($bottleList)
+            );
+        }
+        catch (UntappdException $e) {
+            $data['errors'] = array(
+                'Untappd' => 'Error: Could not connect to Untappd API'
+            );
+        }
 
         //dd($data['beers']['drafts']);
         //sortAssocArray($data['beers']['drafts'], 'name');
