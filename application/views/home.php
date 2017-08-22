@@ -260,15 +260,18 @@
 </section>
 
 <section id="events">
-    <div class="container">
+    <div class="container" id="promo-logos">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 text-center">
-                <img src="img/browns-backers.png" alt="Browns backers logo" class="img img-responsive" id="browns-backers-img" />
+                <img src="img/browns-backers.png" alt="Browns backers logo" class="img img-responsive sr-button" id="browns-backers-img" />
                 <h3>Home of the official Brewery District Browns Backers!</h3>
                 <a href="http://brownsbackerscolumbus.com/" target="_blank">Upcoming Events</a>
                 <br /><br /><br />
-                <i class="fa fa-5x fa-question-circle-o red" aria-hidden="true"></i>
+                <i class="fa fa-8x fa-question-circle-o red sr-button" aria-hidden="true"></i>
                 <h3>Join us for trivia every Wednesday night from 8pm-10pm!</h3>
+                <br /><br /><br />
+                <img src="<?= base_url('img/untappd-badge1.jpg') ?>" alt="Verified Untappd venue badge." class="img img-responsive center-block sr-button" id="untappd-img" />
+                <h3>Drink socially with <a href="https://untappd.com/v/jimmy-vs-grill-and-pub/28629" target="_blank">us!</a></h3>
             </div>
         </div>
     </div>
@@ -314,11 +317,11 @@
                         <a data-toggle="collapse" href="#draft-collapse">
                             <div class="panel-heading">
                                 <h2 class="panel-title">
-                                    <span class="roman larger">D</span>rafts<span class="glyphicon glyphicon-plus float-right v-center"></span>
+                                    <span class="roman larger">D</span>rafts<span class="glyphicon glyphicon-minus float-right v-center"></span>
                                 </h2>
                             </div>
                         </a>
-                        <div id="draft-collapse" class="panel-collapse collapse">
+                        <div id="draft-collapse" class="panel-collapse collapse in">
                             <div class="panel-body">
                                 <?php if (isset($beers['drafts'])) : ?>
                                     <?php foreach($beers['drafts'] as $beer) : ?>
@@ -349,11 +352,11 @@
                         <a data-toggle="collapse" href="#bottles-collapse">
                             <div class="panel-heading">
                                 <h2 class="panel-title">
-                                    <span class="roman larger">B</span>ottles &amp; <span class="roman larger">C</span>ans<span class="glyphicon glyphicon-plus float-right v-center"></span>
+                                    <span class="roman larger">B</span>ottles &amp; <span class="roman larger">C</span>ans<span class="glyphicon glyphicon-minus float-right v-center"></span>
                                 </h2>
                             </div>
                         </a>
-                        <div id="bottles-collapse" class="panel-collapse collapse">
+                        <div id="bottles-collapse" class="panel-collapse collapse in">
                             <div class="panel-body">
                                 <?php if (isset($beers['bottles'])) : ?>
                                     <?php foreach($beers['bottles'] as $beer) : ?>

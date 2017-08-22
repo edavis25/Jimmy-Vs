@@ -19,7 +19,8 @@ class UntappdLocation extends Untappd_api {
 
     public function getLocationByName() {
         $data = $this->getLocations();
-        if (array_key_exists('error', $data)) {
+
+        if (!$data || array_key_exists('error', $data)) {
             require 'UntappdException.php';
             throw new UntappdException('No user locations found');
             return;
