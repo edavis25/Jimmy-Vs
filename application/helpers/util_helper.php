@@ -3,6 +3,26 @@
  * Utility functions, parameter processing functions, and the renderTemplate functions...
  */
 
+function sortAssocArray($array, $sortByKey) {
+    $sortArray = array();
+    foreach ($array as $i) {
+        if (is_object($i)) {
+            $i = (array) $i;
+        }
+        $sortArray[] = $i[$sortByKey];
+    }
+    array_multisort($sortArray, SORT_ASC, $array);
+    return $array;
+}
+
+
+function dd($data) {
+    echo "<pre>";
+    print_r($data);
+    echo "</pre>"; 
+    die;
+}
+
 function isLoggedIn() {
     $inSession = session_id();
     if (!empty($inSession)) {

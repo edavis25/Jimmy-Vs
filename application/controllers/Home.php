@@ -23,10 +23,48 @@ class Home extends CI_Controller {
     public function index() {
         $this->load->model('Beer_model');
         $this->load->model('Special_model');
-       
+        $this->load->library('UntappdLibrary');
         $data = array();
-        //$data['beers'] = $this->Beer_model->getAllBeers();
-        $data['beers'] = $this->Beer_model->getBeersByCategory('Draft');
+
+        // Format beer list
+        try {
+            $untappd = $this->untappdlibrary->getInstance();
+
+            $draftList = $untappd->getMenuByName('Draft List');
+            $bottleList = $untappd->getMenuByName('Bottles and Cans');
+            $data['beers'] = array(
+                //'drafts'  => sortAssocArray($this->formatBeerList($draftList), 'name'),
+                'drafts'  => $this->formatBeerList($draftList),
+                'bottles' => $this->formatBeerList($bottleList)
+            );
+        }
+        catch (UntappdException $e) {
+            $data['errors'] = array(
+                'Untappd' => 'Error: Could not connect to Untappd API'
+            );
+        }
+
+        //dd($data['beers']['drafts']);
+        //sortAssocArray($data['beers']['drafts'], 'name');
+
+        /*
+        $data['beers']['drafts'] = array();
+        
+        foreach ($list['menu']['sections'][0]['items'] as $item) {
+            $info = array(
+                'name'     => preg_replace('$[(]{1}\d{2,4}[)]{1}$', '', $item['name']),
+                'brewery'  => $item['brewery'],
+                'location' => $item['brewery_location'],
+                'type'    => $item['style'],
+                'abv'      => $item['abv'],
+                'icon'     => $item['label_image'],
+                'ibu'      => $item['ibu']
+            );
+            array_push($data['beers']['drafts'], (object) $info);
+        }
+        //$data['beers'] = $this->Beer_model->getBeersByCategory('Draft');
+        */
+
         date_default_timezone_set('America/New_York');
         $day = date("w");
         $data['special'] = $this->Special_model->getSpecialByDay($day);
@@ -34,4 +72,20 @@ class Home extends CI_Controller {
         $this->load->view('home', $data);
     }
 
+    private function formatBeerList($list) {
+        $array = array();
+        foreach ($list['menu']['sections'][0]['items'] as $item) {
+            $info = array(
+                'name'     => preg_replace('$[(]{1}\d{2,4}[)]{1}$', '', $item['name']),
+                'brewery'  => $item['brewery'],
+                'location' => $item['brewery_location'],
+                'type'    => $item['style'],
+                'abv'      => $item['abv'],
+                'icon'     => $item['label_image'],
+                'ibu'      => $item['ibu']
+            );
+            array_push($array, (object) $info);
+        }
+        return $array;
+    }
 }

@@ -92,16 +92,19 @@
                     <div class="portfolio-box-caption">
                         <div class="portfolio-box-caption-content">
                             <div class="project-category text-faded">
-                                <h3><b>Rotating Draft List:</b></h3>
+                                <h3><b>Rotating Drafts:</b></h3>
                             </div>
                             <div class="project-name">
-                                <ul id="beer-list">
-                                    <?php foreach($beers as $beer) : ?>
-                                        <li>
-                                            <?=$beer->getName() ?>
-                                        </li>
+                                <?php if (isset($beers['drafts'])) : ?>
+                                    <?php foreach($beers['drafts'] as $beer) : ?>
+                                        <b class="hover-beer-name"><?= $beer->name ?></b>
+                                        <i class="hidden-xs hover-beer-brewery"><?= $beer->brewery ?></i>
+                                        <br>
                                     <?php endforeach; ?>
-                                </ul>
+                                <?php else: ?>
+                                    <?php include 'errors.php' ?>
+                                <?php endif; ?>
+
                             </div>
                         </div>
                         
@@ -194,8 +197,11 @@
 <aside class="bg-dark">
     <div class="container text-center">
         <div class="call-to-action">
-            <h2>View Our Full Menu!</h2>
-            <input type="button" class="btn btn-default btn-xl sr-button" data-toggle="modal" data-target="#menu-modal" value="View Menu" id="full-menu-btn" />
+            <h2>View Full Menus!</h2>
+            <!--input type="button" class="btn btn-default btn-xl sr-button" data-toggle="modal" data-target="#menu-modal" value="View Menu" id="full-menu-btn" /-->
+            <button class="btn btn-default btn-xl sr-button" data-toggle="modal" data-target="#menu-modal" id="full-menu-btn"><i class="fa fa-map btn-icon" aria-hidden="true"></i> Full Menu</button>
+            <!--input type="button" class="btn btn-default btn-xl sr-button" data-toggle="modal" data-target="#beer-modal" value="View Drink List" id="full-menu-btn" / -->
+            <button class="btn btn-default btn-xl sr-button" data-toggle="modal" data-target="#beer-modal" id="drink-list-btn"><i class="fa fa-beer btn-icon" aria-hidden="true" id="beer-icon" ></i> Drink List</button>
         </div>
     </div>
 </aside>
@@ -254,15 +260,18 @@
 </section>
 
 <section id="events">
-    <div class="container">
+    <div class="container" id="promo-logos">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 text-center">
-                <img src="img/browns-backers.png" alt="Browns backers logo" class="img img-responsive" id="browns-backers-img" />
+                <img src="img/browns-backers.png" alt="Browns backers logo" class="img img-responsive sr-button" id="browns-backers-img" />
                 <h3>Home of the official Brewery District Browns Backers!</h3>
                 <a href="http://brownsbackerscolumbus.com/" target="_blank">Upcoming Events</a>
                 <br /><br /><br />
-                <i class="fa fa-5x fa-question-circle-o red" aria-hidden="true"></i>
+                <i class="fa fa-8x fa-question-circle-o red sr-button" aria-hidden="true"></i>
                 <h3>Join us for trivia every Wednesday night from 8pm-10pm!</h3>
+                <br /><br /><br />
+                <img src="<?= base_url('img/untappd-badge1.jpg') ?>" alt="Verified Untappd venue badge." class="img img-responsive center-block sr-button" id="untappd-img" />
+                <h3>Drink socially with <a href="https://untappd.com/v/jimmy-vs-grill-and-pub/28629" target="_blank">us!</a></h3>
             </div>
         </div>
     </div>
@@ -286,8 +295,98 @@
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
         </div>
-
     </div>
-</div>   
+</div>
+
+
+<!-- Beer List Modal -->
+<div id="beer-modal" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title roman">JIMMY V's - Craft Beer List</h4>
+            </div>
+            <div class="modal-body">
+
+                <!-- Drafts panel -->
+                <div class="panel-group">
+                    <div class="panel panel-default">
+                        <a data-toggle="collapse" href="#draft-collapse">
+                            <div class="panel-heading">
+                                <h2 class="panel-title">
+                                    <span class="roman larger">D</span>rafts<span class="glyphicon glyphicon-minus float-right v-center"></span>
+                                </h2>
+                            </div>
+                        </a>
+                        <div id="draft-collapse" class="panel-collapse collapse in">
+                            <div class="panel-body">
+                                <?php if (isset($beers['drafts'])) : ?>
+                                    <?php foreach($beers['drafts'] as $beer) : ?>
+                                        <div class="container col-md-6">
+                                            <img src="<?= $beer->icon ?>" alt="<?= $beer->name ?> logo" class="img img-responsive beer-logo" />
+                                            <span class="beer-name"><?= $beer->name ?></span>
+                                            <i class="beer-type"><?= $beer->type ?></i>
+                                            <div class="beer-details">
+                                                <?= $beer->location ?>
+                                                &bull;
+                                                <?= $beer->abv ?>%
+                                                &bull;
+                                                <?= $beer->brewery ?>
+                                            </div>
+                                        </div>
+                                    <?php endforeach; ?>
+                                <?php else: ?>
+                                    <?php include 'errors.php' ?>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- /End drafts panel  -->
+
+                <!-- Bottles and cans panel -->
+                <div class="panel-group">
+                    <div class="panel panel-default">
+                        <a data-toggle="collapse" href="#bottles-collapse">
+                            <div class="panel-heading">
+                                <h2 class="panel-title">
+                                    <span class="roman larger">B</span>ottles &amp; <span class="roman larger">C</span>ans<span class="glyphicon glyphicon-minus float-right v-center"></span>
+                                </h2>
+                            </div>
+                        </a>
+                        <div id="bottles-collapse" class="panel-collapse collapse in">
+                            <div class="panel-body">
+                                <?php if (isset($beers['bottles'])) : ?>
+                                    <?php foreach($beers['bottles'] as $beer) : ?>
+                                        <div class="container col-md-6">
+                                            <img src="<?= $beer->icon ?>" alt="<?= $beer->name ?> logo" class="img img-responsive beer-logo" />
+                                            <span class="beer-name"><?= $beer->name ?></span>
+                                            <i class="beer-type"><?= $beer->type ?></i>
+                                            <div class="beer-details">
+                                                <?= $beer->location ?>
+                                                &bull;
+                                                <?= $beer->abv ?>%
+                                                &bull;
+                                                <?= $beer->brewery ?>
+                                            </div>
+                                        </div>
+                                    <?php endforeach; ?>
+                                <?php else: ?>
+                                    <?php include 'errors.php' ?>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- /End bottles panel -->
+
+            </div> <!-- /End modal body -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div> <!-- /End modal content -->
+    </div>
+</div> <!-- /End beer list modal -->
 
 <?php include_once 'footer.php' ?>
