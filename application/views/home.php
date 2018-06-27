@@ -262,10 +262,6 @@
         <div class="row">
             <div class="container col-lg-8 col-lg-offset-2 text-center">
                 <div class="row">
-                    <img src="<?= base_url('img/st-patricks.jpg') ?>" class="img-responsive center-block" style="max-height: 425px; width: auto;" />
-                </div>
-                <br /><br /><br />
-                <div class="row">
                     <img src="img/browns-backers.png" alt="Browns backers logo" class="img img-responsive sr-button" id="browns-backers-img" />
                     <h3>Home of the official Brewery District Browns Backers!</h3>
                     <a href="http://brownsbackerscolumbus.com/" target="_blank">Upcoming Events</a>
