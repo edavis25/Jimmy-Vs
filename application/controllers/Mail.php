@@ -9,7 +9,7 @@ class Mail extends CI_Controller {
 
     private $fromEmailAddress = 'feedback@jimmyvspub.com';
     private $fromEmailName    = 'Event Request';
-    private $toEmailAddress   = 'davis.25811@gmail.com';
+    private $toEmailAddress   = 'brian@jimmyvspub.com';
 
     public function __construct() {
         parent::__construct();
