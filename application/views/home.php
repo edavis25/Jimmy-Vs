@@ -35,7 +35,7 @@
         <div class="row">
             <div class="col-md-3 text-center">
                 <div class="service-box">
-                    <i class="fa fa-4x fa-calendar text-primary sr-icons" id="hours-icon"></i>
+                    <i class="fa fa-4x fa-clock-o text-primary sr-icons" id="hours-icon"></i>
                     <h3>Hours of Operation</h3>
                     <ul id="hours-list">
                         <li>
@@ -229,6 +229,45 @@
                 <p>
                     <a href="mailto:feedback@jimmyvspub.com">feedback@jimmyvspub.com</a>
                 </p>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2" id="book-event">
+                <h3 class="text-center">Book Your Next Event With Us!</h3>
+                <?php if (isset($_SESSION['email_success']) && $_SESSION['email_success']) : ?>
+                    <div class="alert alert-success">
+                        Your event request has been sent!
+                    </div>
+                <?php else : ?>
+                    <?php if (isset($_SESSION['email_success']) && !$_SESSION['email_success']) : ?>
+                        <div class="alert alert-danger">
+                            Oops! There was a problem sending your request. Please try again or email us
+                            directly at <a href="mailto:brian@jimmyvspub.com">brian@jimmyvspub.com</a>
+                        </div>
+                    <?php endif; ?>
+                    <form action="<?=base_url('mail/event_email')?>" method="POST">
+                        <div class="form-group">
+                            <label for="name" class="control-label">Name:</label>
+                            <input type="text" name="name" class="form-control" placeholder="Your name" id="name" />
+                        </div>
+                        <div class="form-group">
+                            <label for="email" class="control-label">Email:</label>
+                            <input type="email" name="email" class="form-control" placeholder="your@email.com" id="email" />
+                        </div>
+                        <div class="form-group">
+                            <label for="phone" class="control-label">Phone:</label>
+                            <input type="tel" name="phone" class="form-control" placeholder="614-234-3593" id="phone" />
+                        </div>
+                        <div class="form-group">
+                            <label for="details" class="control-label">Details:</label>
+                            <textarea name="details" class="form-control" id="details" rows="5" placeholder="Additional details for your event. (ie. graduation party, number guests, etc.)"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-success btn-lg" value="Submit" />
+                        </div>
+                    </form>
+                <?php endif; ?>
             </div>
         </div>
     </div>
