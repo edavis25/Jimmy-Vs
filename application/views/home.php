@@ -262,16 +262,26 @@
 <section id="events">
     <div class="container" id="promo-logos">
         <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 text-center">
-                <img src="img/browns-backers.png" alt="Browns backers logo" class="img img-responsive sr-button" id="browns-backers-img" />
-                <h3>Home of the official Brewery District Browns Backers!</h3>
-                <a href="http://brownsbackerscolumbus.com/" target="_blank">Upcoming Events</a>
+            <div class="container col-lg-8 col-lg-offset-2 text-center">
+                <div class="row">
+                    <img src="<?= base_url('img/st-patricks.jpg') ?>" class="img-responsive center-block" style="max-height: 425px; width: auto;" />
+                </div>
                 <br /><br /><br />
-                <i class="fa fa-8x fa-question-circle-o red sr-button" aria-hidden="true"></i>
-                <h3>Join us for trivia every Wednesday night from 8pm-10pm!</h3>
+                <div class="row">
+                    <img src="img/browns-backers.png" alt="Browns backers logo" class="img img-responsive sr-button" id="browns-backers-img" />
+                    <h3>Home of the official Brewery District Browns Backers!</h3>
+                    <a href="http://brownsbackerscolumbus.com/" target="_blank">Upcoming Events</a>
+                </div>
                 <br /><br /><br />
-                <img src="<?= base_url('img/untappd-badge1.jpg') ?>" alt="Verified Untappd venue badge." class="img img-responsive center-block sr-button" id="untappd-img" />
-                <h3>Drink socially with <a href="https://untappd.com/v/jimmy-vs-grill-and-pub/28629" target="_blank">us!</a></h3>
+                <div class="row">
+                    <i class="fa fa-8x fa-commenting-o red sr-button" aria-hidden="true"></i>
+                    <h3>Join us for stand-up comedy provided by <a href="https://elandagal.com/" target="_blank">El &amp; a Gal Entertainment</a> every Tuesday night from 8pm-10pm!</h3>
+                </div>
+                <br /><br /><br />
+                <div class="row">
+                    <img src="<?= base_url('img/untappd-badge1.jpg') ?>" alt="Verified Untappd venue badge." class="img img-responsive center-block sr-button" id="untappd-img" />
+                    <h3>Drink socially with <a href="https://untappd.com/v/jimmy-vs-grill-and-pub/28629" target="_blank">us!</a></h3>
+                </div>
             </div>
         </div>
     </div>
