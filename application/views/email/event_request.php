@@ -6,21 +6,17 @@
                 Someone has submitted a request to book an event!
             </h3>
             <ul>
-                <li>
+                <li style="margin-bottom: 10px;">
                     <strong>Name: </strong><?= isset($name) ? $name : 'No name given' ?>
-                    <br>
                 </li>
-                <li>
+                <li style="margin-bottom: 10px;">
                     <strong>Email: </strong><?= isset($email) ? $email : 'No email given' ?>
-                    <br>
                 </li>
-                <li>
+                <li style="margin-bottom: 10px;">
                     <strong>Phone: </strong><?= isset($phone) ? $phone : 'No phone number given' ?>
-                    <br>
                 </li>
-                <li>
+                <li style="margin-bottom: 10px;">
                     <strong>Details: </strong><?= isset($details) ? $details : 'No details given' ?>
-                    <br>
                 </li>
             </ul>
         </div>
