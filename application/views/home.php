@@ -40,11 +40,11 @@
                     <ul id="hours-list">
                         <li>
                             <b>Bar Hours</b><br />
-                            Mon-Sun: 11am-2am
+                            Mon-Fri: 11am-2am<span class="smaller">*</span><br />
+                            Sat &amp; Sun: 12pm-2am<span class="smaller">*</span>
                         </li>
                         <li>
-                            <b>Kitchen Hours</b><br />
-                            Mon-Sun: 11am-12pm
+                            <em class="smaller">*Kitchen closes at 12am</em>
                             <!-- Sat &amp; Sun Brunch: 10am-3pm -->
                         </li>
                     </ul>
@@ -67,11 +67,9 @@
                     <i class="fa fa-4x fa-glass text-primary sr-icons" id="happy-hour-icon"></i>
                     <h3>Happy Hour</h3>
                     <p class="larger-12x">
-                        Mon-Fri: 2pm-7pm <br />
-                        Sat &amp; Sun: 11am-1pm<br />
+                        Mon-Fri: 2pm-6pm <br />
                         <span class="smaller">
-                            All drafts $3 or less<br />
-                            1/2 off select appetizers
+                            Food &amp; Drink Specials
                         </span>
                     </p>
                 </div>
