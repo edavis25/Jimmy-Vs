@@ -249,19 +249,19 @@
                     <form action="<?=base_url('mail/event_email')?>" method="POST">
                         <div class="form-group">
                             <label for="name" class="control-label">Name:</label>
-                            <input type="text" name="name" class="form-control" placeholder="Your name" id="name" />
+                            <input type="text" name="name" class="form-control" placeholder="Your name" id="name" required="required" />
                         </div>
                         <div class="form-group">
                             <label for="email" class="control-label">Email:</label>
-                            <input type="email" name="email" class="form-control" placeholder="your@email.com" id="email" />
+                            <input type="email" name="email" class="form-control" placeholder="your@email.com" id="email" required="required" />
                         </div>
                         <div class="form-group">
                             <label for="phone" class="control-label">Phone:</label>
-                            <input type="tel" name="phone" class="form-control" placeholder="614-234-3593" id="phone" />
+                            <input type="tel" name="phone" class="form-control" placeholder="614-234-3593" id="phone" required="required" />
                         </div>
                         <div class="form-group">
                             <label for="details" class="control-label">Details:</label>
-                            <textarea name="details" class="form-control" id="details" rows="5" placeholder="Additional details for your event. (ie. graduation party, number guests, etc.)"></textarea>
+                            <textarea name="details" class="form-control" id="details" rows="5" placeholder="Additional details for your event. (ie. graduation party, number guests, etc.)" required="required" ></textarea>
                         </div>
                         <div class="form-group">
                             <input type="submit" class="btn btn-success btn-lg" value="Submit" />
