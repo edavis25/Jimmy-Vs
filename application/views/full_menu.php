@@ -208,32 +208,3 @@
         </div>
     </div>
 </div>
-
-<!-- Brunch -->
-<div class="">
-    <div class="panel-group">
-        <div class="panel panel-default ">
-            <a data-toggle="collapse" href="#brunch-collapse" class="">
-                <div class="panel-heading">
-                    <h4 class="panel-title">
-                        <span class="roman larger">B</span>runch<span class="glyphicon glyphicon-plus float-right"></span>
-                    </h4>
-                </div>
-            </a>
-            <div id="brunch-collapse" class="panel-collapse collapse">
-                <div class="panel-body">
-                    <p class="special-menu-info">
-                        <i >
-                            Brunch served Saturday &amp; Sunday until 1pm
-                        </i>
-                    </p>
-                    <?php 
-                        $currentDishType = $brunch; 
-                        include 'menu-category.php';               
-                    ?>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
