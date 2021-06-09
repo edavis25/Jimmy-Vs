@@ -13,7 +13,7 @@ Freelance project undertaken in early-2017. Built with PHP and the CodeIgniter f
 - Full-stack development cycle (planning through delivery)
 - Page design
 - Employee training
-- Deployment, server provisioning, DNS management, and maintenance.
+- Deployment, server provisioning, DNS management, and maintenance
 
 ## Tech Stack
 - PHP (CodeIgniter)
